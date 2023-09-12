@@ -16,12 +16,16 @@ const PostText = styled.Text`
     line-height: 24px;
 `;
 
-export const FullPostScreen = () => {
+export const FullPostScreen = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState();
+    const { id, title,  } = route.params;
 
     useEffect(() => {
-        axios.get('https://65001ecd18c34dee0cd45480.mockapi.io/articles/1')
+        navigation.setOptions({
+            title,
+        });
+        axios.get('https://65001ecd18c34dee0cd45480.mockapi.io/articles/' + id)
             .then(({ data }) => {
                 setData(data)
             })

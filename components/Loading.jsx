@@ -4,7 +4,7 @@ export const Loading = () => {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <ActivityIndicator size="large" />
-            <Text style={{ marginTop: 15, fontSize: 18 }}>Loading...</Text>
+            <Text style={{ marginTop: 15, fontSize: 18 }}>Загрузка...</Text>
         </View>
     )
 }

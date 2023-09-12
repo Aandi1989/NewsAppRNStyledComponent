@@ -7,7 +7,7 @@ import { Loading } from '../components/Loading';
 
 
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState();
 
@@ -29,12 +29,8 @@ export const HomeScreen = () => {
   useEffect(fetchPosts, [])
 
   if(isLoading){
-    return (
-        <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-            <Loading/>
-        </View>
-    )
-  }
+    return  <Loading/>
+  };
 
   return (
     <View>
@@ -46,7 +42,7 @@ export const HomeScreen = () => {
         }
         data={items}
         renderItem={({item}) => 
-        <TouchableOpacity >
+        <TouchableOpacity onPress={() => navigation.navigate('FullPost', { id: item.id, title: item.title })}>
             <Post title={item.title}
                 imageUrl={item.imageUrl} 
                 createdAt={item.createdAt}
